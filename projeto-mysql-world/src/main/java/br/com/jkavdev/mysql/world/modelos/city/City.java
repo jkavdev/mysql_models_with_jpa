@@ -1,13 +1,16 @@
-package br.com.jkavdev.cidade.modelos;
+package br.com.jkavdev.mysql.world.modelos.city;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import br.com.jkavdev.mysql.world.modelos.country.Country;
 
 @Entity
 @Table(name = "city")
@@ -25,7 +28,7 @@ public class City {
 	private Integer population;
 
 	@ManyToOne
-	@JoinColumn(name = "CountryCode", columnDefinition = "char(3)")
+	@JoinColumn(name = "CountryCode", columnDefinition = "char(3)", foreignKey = @ForeignKey(name = "fk_city_country"))
 	private Country country;
 
 	public Integer getId() {

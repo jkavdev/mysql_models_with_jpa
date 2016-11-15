@@ -1,4 +1,4 @@
-package br.com.jkavdev.cidade.modelos;
+package br.com.jkavdev.mysql.world.modelos.country;
 
 import java.util.HashMap;
 import java.util.Map;

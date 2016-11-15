@@ -1,8 +1,6 @@
-package br.com.jkavdev.cidade.modelos.converter;
+package br.com.jkavdev.mysql.world.modelos.country;
 
 import javax.persistence.AttributeConverter;
-
-import br.com.jkavdev.cidade.modelos.Continent;
 
 public class ContinentConverter implements AttributeConverter<Continent, String> {
 

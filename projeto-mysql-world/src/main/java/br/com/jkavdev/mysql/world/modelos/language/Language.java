@@ -1,14 +1,18 @@
-package br.com.jkavdev.cidade.modelos;
+package br.com.jkavdev.mysql.world.modelos.language;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.com.jkavdev.mysql.world.modelos.country.Country;
 
 @Entity
 @Table(name = "countrylanguage")
@@ -18,12 +22,12 @@ public class Language {
 	@Id
 	@Column(name = "Language", columnDefinition = "char(30)", nullable = false)
 	private String language;
-	
+
 	@Id
-	@OneToOne
-	@JoinColumn(name = "CountryCode", unique = false, columnDefinition = "char(3)")
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CountryCode", columnDefinition = "char(3)", foreignKey = @ForeignKey(name = "fk_language_country"))
 	private Country countryCode;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "IsOfficial", nullable = false, length = 2)
 	private Official Official;
