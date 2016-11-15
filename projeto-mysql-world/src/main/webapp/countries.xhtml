@@ -1,0 +1,26 @@
+<ui:composition template="/template/layout-padrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Dashboard</ui:define>
+
+	<ui:define name="corpo">
+
+		<h:form id="form">
+			<p:fieldset legend="Countries" style="margin-right: 100px; margin-left: 100px; margin-top: 50px;">
+				<p:dataTable value="#{countryBean.countries}" var="country"
+					style="margin-right: 100px; margin-left: 100px; margin-top: 50px;">
+					<p:column headerText="Country name" style="center">
+						<p:outputLabel value="#{country.name}" />
+					</p:column>
+				</p:dataTable>
+			</p:fieldset>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

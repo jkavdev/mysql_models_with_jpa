@@ -1,0 +1,66 @@
+<ui:composition template="/template/layout-padrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Dashboard</ui:define>
+
+	<ui:define name="corpo">
+
+		<h:form id="form">
+
+			<p:carousel var="estado" value="#{estadoBean.estados}"
+				headerText="Estados" itemStyle="text-align:center" responsive="true">
+
+				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+					columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+
+					<f:facet name="header">
+						<p:commandLink update=":form:detalheEstado"
+							oncomplete="PF('estadoDialog').show()">
+							<f:setPropertyActionListener value="#{estado}"
+								target="#{estadoBean.estadoSelecionado}" />
+							<h:graphicImage library="images"
+								name="estados/#{estado.bandeira}.gif" />
+						</p:commandLink>
+					</f:facet>
+
+					<h:outputText value="Nome:" />
+					<h:outputText value="#{estado.nome}" />
+
+					<h:outputText value="UF:" />
+					<h:outputText value="#{estado.uf}" />
+				</p:panelGrid>
+
+				<f:facet name="footer">
+	                Há no total #{estadoBean.estados.size()} estados.
+	        	</f:facet>
+			</p:carousel>
+
+			<p:dialog header="Estado Info" widgetVar="estadoDialog" modal="true"
+				showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="detalheEstado" style="text-align:center;">
+					<p:panelGrid columns="2"
+						rendered="#{not empty estadoBean.estadoSelecionado}"
+						columnClasses="label,value">
+						<f:facet name="header">
+							<h:graphicImage library="images"
+								name="estados/#{estadoBean.estadoSelecionado.bandeira}.gif" />
+						</f:facet>
+
+						<h:outputText value="Nome:" />
+						<h:outputText value="#{estadoBean.estadoSelecionado.nome}" />
+
+						<h:outputText value="UF:" />
+						<h:outputText value="#{estadoBean.estadoSelecionado.uf}" />
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
