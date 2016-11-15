@@ -1,16 +1,19 @@
 package br.com.jkavdev.cidade.modelos;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Continent {
-	
-	ASIA("Asia"),
-	EUROPE("Europe"),
+
+	ASIA("Asia"), 
+	EUROPE("Europe"), 
 	NORTH_AMERICA("North America"), 
-	AFRICA("Africa"),
-	OCEANIA("Oceania"),
-	ANTARcTICA("Antarctica"),
+	AFRICA("Africa"), 
+	OCEANIA("Oceania"), 
+	ANTARCTICA("Antarctica"), 
 	SOUTH_AMERICA("South America");
-	
-	private String description;
+
+	private final String description;
 
 	private Continent(String description) {
 		this.description = description;
@@ -20,8 +23,16 @@ public enum Continent {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public static final Map<String, Continent> dbValues = new HashMap<>();
+
+	static {
+		for (Continent value : values()) {
+			dbValues.put(value.description, value);
+		}
+	}
+
+	public static Continent fromDbValue(String dbData) {
+		return dbValues.get(dbData);
 	}
 
 }

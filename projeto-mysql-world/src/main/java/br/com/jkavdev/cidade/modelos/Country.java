@@ -1,9 +1,12 @@
 package br.com.jkavdev.cidade.modelos;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import br.com.jkavdev.cidade.modelos.converter.ContinentConverter;
 
 @Entity
 @Table(name = "country")
@@ -14,9 +17,11 @@ public class Country {
 	private String code;
 	@Column(name = "Name", columnDefinition = "char(52)", nullable = false)
 	private String name;
-//	@Enumerated(EnumType.STRING)
-//	@Column(name = "Continent", nullable = false, length = 25)
-//	private Continent continent;
+
+	@Convert(converter = ContinentConverter.class)
+	@Column(name = "Continent", nullable = false, length = 25)
+	private Continent continent;
+
 	@Column(name = "Region", columnDefinition = "char(26)", nullable = false)
 	private String region;
 	@Column(name = "SurfaceArea", precision = 10, scale = 2, nullable = false)
@@ -58,13 +63,13 @@ public class Country {
 		this.name = name;
 	}
 
-//	public Continent getContinent() {
-//		return continent;
-//	}
-//
-//	public void setContinent(Continent continent) {
-//		this.continent = continent;
-//	}
+	public Continent getContinent() {
+		return continent;
+	}
+
+	public void setContinent(Continent continent) {
+		this.continent = continent;
+	}
 
 	public String getRegion() {
 		return region;
@@ -74,51 +79,51 @@ public class Country {
 		this.region = region;
 	}
 
-	public float getSurfaceArea() {
+	public Float getSurfaceArea() {
 		return surfaceArea;
 	}
 
-	public void setSurfaceArea(float surfaceArea) {
+	public void setSurfaceArea(Float surfaceArea) {
 		this.surfaceArea = surfaceArea;
 	}
 
-	public int getIndepYear() {
+	public Integer getIndepYear() {
 		return indepYear;
 	}
 
-	public void setIndepYear(int indepYear) {
+	public void setIndepYear(Integer indepYear) {
 		this.indepYear = indepYear;
 	}
 
-	public int getPopulation() {
+	public Integer getPopulation() {
 		return population;
 	}
 
-	public void setPopulation(int population) {
+	public void setPopulation(Integer population) {
 		this.population = population;
 	}
 
-	public float getLifeExpectancy() {
+	public Float getLifeExpectancy() {
 		return lifeExpectancy;
 	}
 
-	public void setLifeExpectancy(float lifeExpectancy) {
+	public void setLifeExpectancy(Float lifeExpectancy) {
 		this.lifeExpectancy = lifeExpectancy;
 	}
 
-	public float getGnp() {
+	public Float getGnp() {
 		return gnp;
 	}
 
-	public void setGnp(float gnp) {
+	public void setGnp(Float gnp) {
 		this.gnp = gnp;
 	}
 
-	public float getGnpold() {
+	public Float getGnpold() {
 		return gnpold;
 	}
 
-	public void setGnpold(float gnpold) {
+	public void setGnpold(Float gnpold) {
 		this.gnpold = gnpold;
 	}
 
@@ -146,11 +151,11 @@ public class Country {
 		this.headOfState = headOfState;
 	}
 
-	public int getCapital() {
+	public Integer getCapital() {
 		return capital;
 	}
 
-	public void setCapital(int capital) {
+	public void setCapital(Integer capital) {
 		this.capital = capital;
 	}
 

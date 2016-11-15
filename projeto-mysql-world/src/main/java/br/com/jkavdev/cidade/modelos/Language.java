@@ -21,14 +21,14 @@ public class Language {
 	
 	@Id
 	@OneToOne
-	@JoinColumn(name = "CountryCode", columnDefinition = "char(3)")
+	@JoinColumn(name = "CountryCode", unique = false, columnDefinition = "char(3)")
 	private Country countryCode;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "IsOfficial", nullable = false, length = 2)
 	private Official Official;
 	@Column(name = "Percentage", precision = 4, scale = 1, nullable = false)
-	private float percentage;
+	private Float percentage;
 
 	public String getLanguage() {
 		return language;
@@ -54,11 +54,11 @@ public class Language {
 		Official = official;
 	}
 
-	public float getPercentage() {
+	public Float getPercentage() {
 		return percentage;
 	}
 
-	public void setPercentage(float percentage) {
+	public void setPercentage(Float percentage) {
 		this.percentage = percentage;
 	}
 

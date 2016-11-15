@@ -16,23 +16,23 @@ public class City {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", columnDefinition = "int(11)")
-	private int id;
-	@Column(name = "Name", columnDefinition = "char(35)", length = 35, nullable = false)
+	private Integer id;
+	@Column(name = "Name", columnDefinition = "char(45)", nullable = false)
 	private String name;
-	@Column(name = "District", columnDefinition = "char(20)", length = 20, nullable = false)
+	@Column(name = "District", columnDefinition = "char(35)", nullable = false)
 	private String district;
 	@Column(name = "Population", columnDefinition = "int(11)", nullable = false)
-	private int population;
+	private Integer population;
 
 	@ManyToOne
 	@JoinColumn(name = "CountryCode", columnDefinition = "char(3)")
 	private Country country;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -52,11 +52,11 @@ public class City {
 		this.district = district;
 	}
 
-	public int getPopulation() {
+	public Integer getPopulation() {
 		return population;
 	}
 
-	public void setPopulation(int population) {
+	public void setPopulation(Integer population) {
 		this.population = population;
 	}
 
