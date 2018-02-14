@@ -14,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.immutables.builder.Builder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,17 +32,8 @@ public class Country {
 	public static final String PARAM_CONTINENT = "continent";
 
 	@Builder.Factory
-	public static Country country(String code, String name, Continent continent, String region, Float surfaceArea,
+	public static Country of(String code, String name, Continent continent, String region, Float surfaceArea,
 			Integer population, String localName, String governmentForm, String code2) {
-		checkNotNull(code);
-		checkNotNull(name);
-		checkNotNull(continent);
-		checkNotNull(region);
-		checkNotNull(surfaceArea);
-		checkNotNull(population);
-		checkNotNull(localName);
-		checkNotNull(governmentForm);
-		checkNotNull(code2);
 		return new Country(code, name, continent, region, surfaceArea, population, localName, governmentForm, code2);
 	}
 
@@ -92,6 +81,15 @@ public class Country {
 
 	private Country(String code, String name, Continent continent, String region, Float surfaceArea, Integer population,
 			String localName, String governmentForm, String code2) {
+		checkNotNull(code);
+		checkNotNull(name);
+		checkNotNull(continent);
+		checkNotNull(region);
+		checkNotNull(surfaceArea);
+		checkNotNull(population);
+		checkNotNull(localName);
+		checkNotNull(governmentForm);
+		checkNotNull(code2);
 		this.code = code;
 		this.name = name;
 		this.continent = continent;

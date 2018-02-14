@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 
 public enum Status {
 
-	OFFICIAL("T", "Official"), UNOFFICIAL("F", "Unofficial");
+	OFFICIAL("T", "Official"), 
+	UNOFFICIAL("F", "Unofficial");
 
 	private static final Map<String, Status> valueMap;
 	private String value;

@@ -10,12 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.immutables.builder.Builder;
 
 import com.google.common.base.MoreObjects;
-import com.google.common.base.MoreObjects.ToStringHelper;
 
 @Entity
 @Table(name = "city")
@@ -24,11 +21,6 @@ public class City {
 	//ainda a analisar, @Builder.Factory criara um builder do tipo
 	@Builder.Factory
 	public static City city(Country country, String name, String district, Integer population) {
-		//aplicando fail fast, se for pra da pau, da logo, kkk
-		checkNotNull(country);
-		checkNotNull(name);
-		checkNotNull(district);
-		checkNotNull(population);
 		return new City(country, name, district, population);
 	}
 
@@ -50,6 +42,11 @@ public class City {
 	}
 
 	private City(Country country, String name, String district, Integer population) {
+		//aplicando fail fast, se for pra da pau, da logo, kkk
+		checkNotNull(country);
+		checkNotNull(name);
+		checkNotNull(district);
+		checkNotNull(population);
 		this.country = country;
 		this.name = name;
 		this.district = district;

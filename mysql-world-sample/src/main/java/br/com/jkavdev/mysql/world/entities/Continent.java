@@ -22,7 +22,7 @@ public enum Continent {
 		return description;
 	}
 	
-	public static Continent from(String value) {
+	public static Continent of(String value) {
 		if(isNoneBlank(value))
 			return Continent.valueOf(value.toUpperCase().replace(" ", "_"));
 		throw new IllegalArgumentException("Unknown value: " + value);

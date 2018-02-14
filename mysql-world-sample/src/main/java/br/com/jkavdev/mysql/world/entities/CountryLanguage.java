@@ -21,9 +21,6 @@ public class CountryLanguage implements Serializable {
 
 	@Builder.Factory
 	public static CountryLanguage language(String language, Status status, Float percentage) {
-		checkNotNull(language);
-		checkNotNull(status);
-		checkNotNull(percentage);
 		return new CountryLanguage(language, status, percentage);
 	}
 
@@ -40,6 +37,9 @@ public class CountryLanguage implements Serializable {
 	}
 
 	private CountryLanguage(String language, Status status, Float percentage) {
+		checkNotNull(language);
+		checkNotNull(status);
+		checkNotNull(percentage);
 		this.language = language;
 		this.status = status;
 		this.percentage = percentage;

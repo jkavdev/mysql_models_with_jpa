@@ -15,7 +15,7 @@ public class ContinentConverter implements AttributeConverter<Continent, String>
 
 	@Override
 	public Continent convertToEntityAttribute(String dbData) {
-		return Continent.from(dbData);
+		return Continent.of(dbData);
 	}
 
 }
