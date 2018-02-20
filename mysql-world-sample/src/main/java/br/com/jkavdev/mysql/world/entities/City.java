@@ -2,6 +2,8 @@ package br.com.jkavdev.mysql.world.entities;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -68,33 +70,18 @@ public class City {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((district == null) ? 0 : district.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+		return Objects.hash(district, name);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		City other = (City) obj;
-		if (district == null) {
-			if (other.district != null)
-				return false;
-		} else if (!district.equals(other.district))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+		if (obj == this) return true;
+        if (!(obj instanceof City)) {
+            return false;
+        }
+        City user = (City) obj;
+        return Objects.equals(name, user.name) &&
+                Objects.equals(district, user.district);
 	}
 	
 }

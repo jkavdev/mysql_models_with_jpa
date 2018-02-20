@@ -10,7 +10,7 @@ public class ContinentConverter implements AttributeConverter<Continent, String>
 
 	@Override
 	public String convertToDatabaseColumn(Continent vehicle) {
-		return vehicle.getDescription();
+		return vehicle.description();
 	}
 
 	@Override
